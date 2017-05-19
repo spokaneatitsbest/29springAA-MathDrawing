@@ -1,0 +1,82 @@
+<html>
+
+<style>
+html {
+  background-color: black;
+  color: black;
+}
+#canvas{
+  background-color: #00000000;
+  color: #00000000;
+  fill
+}
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+window.onload = function() {
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+//ctx.fillStyle = "blue";
+
+ctx.moveTo(50,100);
+ctx.lineTo(150,200);
+ctx.stroke();
+ctx.beginPath();
+var x = 100;
+var y = 400;
+var w = canvas.width;
+var h = canvas.height;
+  var rectcount = 200;
+ function getRndColor() {
+  var r = (255 * Math.random()) | 0,
+    g = (255 * Math.random()) | 0,
+    b = (255 * Math.random()) | 0;
+  return "rgb(" + r + "," + g + "," + b + ")";
+}
+function rectupdater() {
+if (y == 0)
+  {y = y + 50} else {
+  y = y-0.1;
+
+//    console.log("sucess");
+  } 
+for (var i = 0; i <= rectcount; i++) {
+//ctx.fillStyle = getRndColor();
+ctx.fillStyle = "#" + i + i + "FF";
+ctx.fillRect(x+(i*10),190+Math.cos(i*5+y),5,50+Math.cos(y+9000)); 
+
+ctx.stroke();
+
+}
+
+}
+function clearcanv() {
+ctx.clearRect(0,0,w,h);
+frameupdatevar++;
+}
+var frameupdatevar = 2;
+  function main() {
+    clearcanv();
+    rectupdater();
+	frameupdatevar = frameupdatevar+1;
+
+    requestAnimationFrame(main);
+	
+
+  }
+ main(); 
+}
+
+
+
+</script>
+
+
+<body>
+
+
+<canvas id="myCanvas" width="1500" height="300"></canvas>
+
+
+</body>
+</html>
